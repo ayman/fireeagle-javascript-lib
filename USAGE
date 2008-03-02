@@ -1,0 +1,7 @@
+corelib: you MUST add the files from http://oauth.googlecode.com/svn/code/javascript/v2/ for the example to work.
+
+lib: oauthext.js extends the class from corelib.  
+     fe.js is the basic Fire Eagle Consumer
+
+example: An example which produces GET urls using the 
+         FireEagleLib wrapper.
