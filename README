@@ -5,4 +5,4 @@ http://oauth.googlecode.com/svn/code/javascript/v2/
 
 lib/fe.js is a wrapper object to make oauth calls to fireeagle.
 
-http://fireeagle.yahoo.net
+See http://fireeagle.yahoo.net for more info.
