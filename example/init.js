@@ -39,7 +39,6 @@ function getRequestTok() {
 function userAuth() {
   init();
   fe.oauthToken = document.getElementById('token').value;
-  fe.oauthTokenSecret = document.getElementById('stoken').value;  
   var url = fe.getAuthorizeUrl();
   fillBlanks('authurl', url);
   return url;
@@ -103,9 +102,11 @@ function getRecent(format) {
   var gts = null;
   fe.oauthToken = document.getElementById('gt').value;
   fe.oauthTokenSecret = document.getElementById('gts').value;
-  var q = document.getElementById('lq').value;
+  var t = document.getElementById('rTime').value;
+  var c = document.getElementById('rCount').value;
   var o = new Object(); 
-  o.address = q;
+  o.count = c;
+  o.time = t;
   var url;
   if (format)
     url = fe.getRecentUrl(o, format);
@@ -114,6 +115,27 @@ function getRecent(format) {
   fillBlanks('recentspan', url);
   return url;
 }
+
+function getWithin(format) {  
+  init();
+  var gt = null;
+  var gts = null;
+  fe.oauthToken = document.getElementById('gt').value;
+  fe.oauthTokenSecret = document.getElementById('gts').value;
+  var place = document.getElementById('placeid').value;
+  var woe = document.getElementById('woeid').value;
+  var o = new Object(); 
+  o.place_id = place;
+  o.woeid = woe;
+  var url;
+  if (format)
+    url = fe.getWithinUrl(o, format);
+  else
+    url = fe.getWithinUrl(o);
+  fillBlanks('withinspan', url);
+  return url;
+}
+
 
 function getUpdate(post, format) {
   init();

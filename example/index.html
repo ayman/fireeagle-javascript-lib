@@ -18,12 +18,12 @@
     </script>
     
     <!-- OAuth -->
-    <script src="../corelib/sha1.js" ></script>
-    <script src="../corelib/oauth.js" ></script>
+    <script src="../CoreLib/sha1.js" ></script>
+    <script src="../CoreLib/oauth.js" ></script>
 
     <!-- OAuthExt -->
-    <script type="text/javascript" src="../lib/oauthext.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../lib/fe.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../FireEagleLib/oauthext.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../FireEagleLib/fe.js" charset="utf-8"></script>
     
     <!-- Consumer Code -->
     <script type="text/javascript" src="init.js" charset="utf-8"></script>
@@ -94,7 +94,7 @@
       <b>Request Token URL</b> <br />
 	  OAuth Step 1.<br />
       <a href="#"
-         onclick="getRequestTok(); return false;">See URL</a>
+         onclick="getRequestTok(); return false;">See URL</a><br />
       <span id="texty"></span>
       </p>
     </div>
@@ -106,7 +106,7 @@
       oauth_token: <input id="token" name="token" size="32" />
       <br />
       <a href="#"
-         onclick="userAuth(); return false">See URL</a>
+         onclick="userAuth(); return false">See URL</a><br />
       <span id="authurl"></span>
       </p>
     </div>
@@ -121,7 +121,7 @@
       oauth_token_secret: <input id="astoken" name="astoken" size="32" />
       <br />
       <a href="#"
-         onclick="getAccess(); return false">See URL</a>
+         onclick="getAccess(); return false">See URL</a><br />
       <span id="accessurl"></span>
       </p>
     </div>
@@ -184,8 +184,8 @@
     <div id="recent">
       <p>
    <code><b>/recent</b></code> <br />
-   Time: <input id="lq" name="rTime" size="32" /> <i>optional</i> <br/>
-   Count: <input id="lq" name="rCount" size="32" /> <i>optional</i> <br/>
+   Time: <input id="rTime" name="rTime" size="32" /> <i>optional</i> <br/>
+   Count: <input id="rCount" name="rCount" size="32" /> <i>optional</i> <br/>
    See URL via:
    <a href="#" onclick="getRecent(FireEagle.RESPONSE_FORMAT.xml, true); return false">XML</a>
    <a href="#" onclick="getRecent(FireEagle.RESPONSE_FORMAT.json, true); return false">JSON</a>
@@ -205,5 +205,19 @@
    <span id="lookupspang"></span>
       </p>
     </div>
-  </body> 
+
+    <div id="within">
+      <p>
+   <code><b>/within</b></code> <br />
+   place_id: <input id="placeid" name="placeid" size="32" /> <i>optional</i> <br/>
+   woeid: <input id="woeid" name="woeid" size="32" /> <i>optional</i> <br/>
+   See URL via:
+   <a href="#" onclick="getWithin(FireEagle.RESPONSE_FORMAT.xml); return false">XML</a>
+   <a href="#"
+      onclick="getWithin(FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
+   <br />
+   <span id="withinspan"></span>
+      </p>
+    </div>
+</body> 
 </html>
