@@ -1,7 +1,7 @@
 This is repo primarily two javascript objects.  
 
-lib/oauthlib.js extends the v2 oauth for javascript from
-http://oauth.googlecode.com/svn/code/javascript/v2/
+lib/oauthlib.js extends the oauth for javascript from
+http://oauth.googlecode.com/svn/code/javascript/
 
 lib/fe.js is a wrapper object to make oauth calls to fireeagle.
 
