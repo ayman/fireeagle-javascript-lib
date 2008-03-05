@@ -105,7 +105,7 @@ function getRecent(format) {
   var t = document.getElementById('rTime').value;
   var c = document.getElementById('rCount').value;
   var o = new Object(); 
-  o.count = c;
+  o.per_page = c;
   o.time = t;
   var url;
   if (format)
