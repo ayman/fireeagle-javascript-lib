@@ -55,8 +55,8 @@ function getAccess() {
 
 function getRequest(format) {  
   init();
-  fe.oauthToken = document.getElementById('gt').value;
-  fe.oauthTokenSecret = document.getElementById('gts').value;
+  fe.oauthToken = document.getElementById('qtoken').value;
+  fe.oauthTokenSecret = document.getElementById('qstoken').value;
   var url;
   if (format)
     url = fe.getUserUrl(format);
