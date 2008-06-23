@@ -1,12 +1,12 @@
 /**
- * init.js
- *
- * Copyright (C) 2008 Yahoo! Inc.
- *
- * Sample JavaScript to make FireEagle OAuth requests.
- *
- * See http://fireeagle.yahoo.net/developer/code/javascript
- */
+* init.js
+*
+* Copyright (C) 2008 Yahoo! Inc.
+*
+* Sample JavaScript to make FireEagle OAuth requests.
+*
+* See http://fireeagle.yahoo.net/developer/code/javascript
+*/
 
 var fe;
 
@@ -59,9 +59,9 @@ function getRequest(format) {
   fe.oauthTokenSecret = document.getElementById('qstoken').value;
   var url;
   if (format)
-    url = fe.getUserUrl(format);
+  url = fe.getUserUrl(format);
   else
-    url = fe.getUserUrl();
+  url = fe.getUserUrl();
   fillBlanks('requests', url);
   return url;
 }
@@ -79,20 +79,20 @@ function getLookup(format, general) {
   }
   var q;
   if (format) 
-    q = document.getElementById('lqg').value;
+  q = document.getElementById('lqg').value;
   else
-    q = document.getElementById('lq').value;
+  q = document.getElementById('lq').value;
   var o = new Object(); 
   o.address = q;
   var url;
   if (format)
-    url = fe.getLookupUrl(o, format);
+  url = fe.getLookupUrl(o, format);
   else
-    url = fe.getLookupUrl(o);
+  url = fe.getLookupUrl(o);
   if (general)
-    fillBlanks('lookupspang', url);
+  fillBlanks('lookupspang', url);
   else 
-    fillBlanks('lookupspan', url);
+  fillBlanks('lookupspan', url);
   return url;
 }
 
@@ -109,9 +109,9 @@ function getRecent(format) {
   o.time = t;
   var url;
   if (format)
-    url = fe.getRecentUrl(o, format);
+  url = fe.getRecentUrl(o, format);
   else
-    url = fe.getRecentUrl(o);
+  url = fe.getRecentUrl(o);
   fillBlanks('recentspan', url);
   return url;
 }
@@ -129,9 +129,9 @@ function getWithin(format) {
   o.woeid = woe;
   var url;
   if (format)
-    url = fe.getWithinUrl(o, format);
+  url = fe.getWithinUrl(o, format);
   else
-    url = fe.getWithinUrl(o);
+  url = fe.getWithinUrl(o);
   fillBlanks('withinspan', url);
   return url;
 }
@@ -146,9 +146,9 @@ function getUpdate(post, format) {
   o.postal = q;
   var l;
   if (format)
-    l = fe.getUpdateUrl(o, format);
+  l = fe.getUpdateUrl(o, format);
   else 
-    l = fe.getUpdateUrl(o);
+  l = fe.getUpdateUrl(o);
   var url = l[0];
   var postData = l[1];
   var udiv = document.getElementById('updates');
@@ -156,9 +156,9 @@ function getUpdate(post, format) {
   var proxy = "proxy.php";
   var method = "POST";
   var proxyUrl = proxy + 
-    "?method=" + Url.encode(method) +
-    "&url=" + Url.encode(url) +
-    "&data="+ Url.encode(postData);
+  "?method=" + Url.encode(method) +
+  "&url=" + Url.encode(url) +
+  "&data="+ Url.encode(postData);
   udiv.innerHTML += "<p>PROXY: " + proxyUrl + "</p><p>";
   document.getElementById('updates').style.display = "block";
 
@@ -178,6 +178,7 @@ function getUpdate(post, format) {
       div.innerHTML += r;
     }
   };
+  
   var handleFailure = function(o){
     var div = document.getElementById('updates');    
     if(o.responseText !== undefined){
@@ -191,71 +192,73 @@ function getUpdate(post, format) {
       div.innerHTML += r;
     }
   };
+  
   var callback = {
-  success:handleSuccess,
-  failure: handleFailure
+    success:handleSuccess,
+    failure: handleFailure
   };
 
   var request = YAHOO.util.Connect.asyncRequest(method, 
                                                 proxyUrl,
                                                 callback); 
-}
+  }
 
-function getHTTPGetRequest(url, message) {
-  var udiv = document.getElementById('updates');
-  udiv.innerHTML = "<b>" + message + "</b><br/>";
-  init();
-  fe.oauthToken = document.getElementById('qtoken').value;
-  fe.oauthTokenSecret = document.getElementById('qstoken').value;
-  
-  var proxy = "http://timetags.research.yahoo.com/js-oauth/FireEagle/proxy.php";
-  var method = "GET";
-  var proxyUrl = proxy +  "?method=" + Url.encode(method) +
+  function getHTTPGetRequest(url, message) {
+    var udiv = document.getElementById('updates');
+    udiv.innerHTML = "<b>" + message + "</b><br/>";
+    init();
+    fe.oauthToken = document.getElementById('qtoken').value;
+    fe.oauthTokenSecret = document.getElementById('qstoken').value;
+
+    var proxy = "http://timetags.research.yahoo.com/js-oauth/FireEagle/proxy.php";
+    var method = "GET";
+    var proxyUrl = proxy +  "?method=" + Url.encode(method) +
     "&url=" + Url.encode(url);
 
-  var handleSuccess = function(o){    
-    var div = document.getElementById('updates');
-    if(o.responseText !== undefined) {
-      div.innerHTML += "<br/> Transaction id: " + o.tId;
-      div.innerHTML += "<br/>HTTP status: " + o.status;
-      div.innerHTML += "<br/>Status code message: " + o.statusText;
-      var r = o.responseText;
-      r = r.replace(/</g, "&lt;");
-      r = r.replace(/>/g, "&gt;");
-      r = "<pre>" + r + "</pre>";
-      div.innerHTML += r;
-    }
-  };
-  
-  var handleFailure = function(o){
-    var div = document.getElementById('updates');    
-    if(o.responseText !== undefined){
-      div.innerHTML += "<br /> <li>Transaction id: " + o.tId + "</li>";
-      div.innerHTML += "<li>HTTP status: " + o.status + "</li>";
-      div.innerHTML += "<li>Status code message: " + o.statusText + "</li>";
-      var r = o.responseText;
-      r = r.replace(/</g, "&lt;");
-      r = r.replace(/>/g, "&gt;");
-      r = "<pre>" + r + "</pre>";
-      div.innerHTML += r;
-    }
-  };
-  var callback = {
-  success:handleSuccess,
-  failure: handleFailure
-  };
+    var handleSuccess = function(o){    
+      var div = document.getElementById('updates');
+      if(o.responseText !== undefined) {
+        div.innerHTML += "<br/> Transaction id: " + o.tId;
+        div.innerHTML += "<br/>HTTP status: " + o.status;
+        div.innerHTML += "<br/>Status code message: " + o.statusText;
+        var r = o.responseText;
+        r = r.replace(/</g, "&lt;");
+        r = r.replace(/>/g, "&gt;");
+        r = "<pre>" + r + "</pre>";
+        div.innerHTML += r;
+      }
+    };
 
-  var request = YAHOO.util.Connect.asyncRequest(method, 
-                                                proxyUrl,
-                                                callback); 
-}
+    var handleFailure = function(o){
+      var div = document.getElementById('updates');    
+      if(o.responseText !== undefined){
+        div.innerHTML += "<br /> <li>Transaction id: " + o.tId + "</li>";
+        div.innerHTML += "<li>HTTP status: " + o.status + "</li>";
+        div.innerHTML += "<li>Status code message: " + o.statusText + "</li>";
+        var r = o.responseText;
+        r = r.replace(/</g, "&lt;");
+        r = r.replace(/>/g, "&gt;");
+        r = "<pre>" + r + "</pre>";
+        div.innerHTML += r;
+      }
+    };
+    
+    var callback = {
+      success:handleSuccess,
+      failure: handleFailure
+    };
 
-var Url = {
-  // public method for url encoding
- encode : function (string) {
-    var s = escape(string);
-    s = s.replace(/\+/g, "%2B");
-    s = s.replace(/\//g, "%2F");
-    return s;
+    var request = YAHOO.util.Connect.asyncRequest(method, 
+                                                  proxyUrl,
+                                                  callback); 
+  }
+
+  var Url = {
+    // public method for url encoding
+    encode : function (string) {
+      var s = escape(string);
+      s = s.replace(/\+/g, "%2B");
+      s = s.replace(/\//g, "%2F");
+      return s;
   }
 }
