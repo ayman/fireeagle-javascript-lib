@@ -226,6 +226,7 @@ function getHTTPGetRequest(url, message) {
       div.innerHTML += r;
     }
   };
+  
   var handleFailure = function(o){
     var div = document.getElementById('updates');    
     if(o.responseText !== undefined){

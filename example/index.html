@@ -4,130 +4,130 @@
 <!--  Sample HTML & JavaScript to make FireEagle OAuth requests. -->
 <!--  See http://fireeagle.yahoo.net/developer/code/javascript -->
 <html>
-  <head>
-    <title>Fire Eagle OAuth v2.11</title>
-    <!-- YUI -->
-    <script 
-       src="http://yui.yahooapis.com/2.4.1/build/yahoo/yahoo-min.js">
-    </script>
-    <script 
-       src="http://yui.yahooapis.com/2.4.1/build/event/event-min.js">
-    </script>
-    <script 
-       src="http://yui.yahooapis.com/2.4.1/build/connection/connection-min.js">
-    </script>
-    
-    <!-- OAuth -->
-    <script src="../corelib/sha1.js" ></script>
-    <script src="../corelib/oauth.js" ></script>
+<head>
+  <title>Fire Eagle OAuth v2.11</title>
+  <!-- YUI -->
+  <script 
+  src="http://yui.yahooapis.com/2.4.1/build/yahoo/yahoo-min.js">
+  </script>
+  <script 
+  src="http://yui.yahooapis.com/2.4.1/build/event/event-min.js">
+  </script>
+  <script 
+  src="http://yui.yahooapis.com/2.4.1/build/connection/connection-min.js">
+  </script>
 
-    <!-- OAuthExt -->
-    <script type="text/javascript" src="../lib/oauthext.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../lib/fe.js" charset="utf-8"></script>
-    
-    <!-- Consumer Code -->
-    <script type="text/javascript" src="init.js" charset="utf-8"></script>
+  <!-- OAuth -->
+  <script src="../corelib/sha1.js" ></script>
+  <script src="../corelib/oauth.js" ></script>
 
-    <style>
-      div.response {
-        font-family: monospace;
-        overflow-x: auto;
-        overflow-y: auto;
-        background: #dddddd; 
-        border: #333333 1px solid;
-        padding: 4px;
-        margin-top: 4px;
-        margin-bottom: 4px;
-      }
-    </style>
-  </head>
+  <!-- OAuthExt -->
+  <script type="text/javascript" src="../lib/oauthext.js" charset="utf-8"></script>
+  <script type="text/javascript" src="../lib/fe.js" charset="utf-8"></script>
 
-  <body onLoad="">
-    <h1>Fire Eagle OAuth V2.11</h1>
-    <p>
-      Here's a little JavaScript Library and Testing Environment for
-      making OAuth Calls to Fire Eagle.
-    </p>
-        <p>
-          To get started you will need to:
-          <ol>
-            <li>Use <code>sha1.js</code> and <code>oauth.js</code>
-              from <a href="http://oauth.googlecode.com/svn/code/javascript/">
-                code.google.com</a>
-            </li>
-            <li>
-              Get <a href="OAuthExt.js"><code>OAuthExt.js</code></a>
-              and <a href="fe.js"><code>fe.js</code></a> from us.
-            </li>
-            <li>
-              Simply include all 4 files in that order
-              using <code>&lt;script&gt;</code> tags.
-            </li>
-            <li>
-              Construct in JavaScript the Fire Eagle class
-              like <code>var fe = new FireEagle(consumerToken,
-                consumerSecret)</code> and have fun.  For now, check out
-              the methods in the <code>fe.js</code> class for more
-              details.
-            </li>
-          </ol>
-        </p>
-        <hr width="65%" align="left" />
-        <h2>Try it!</h2>
-	  Here's a simple example page which walks through the OAuth
-	  proceeder and makes a few user calls.
-        <h3>Global Required Settings</h3>
-	  Consumer Key:
-	  <input id="reqtoken" name="reqtoken" size="32" />
-	  Consumer Secret:
-	  <input id="reqstoken" name="reqstoken" size="32"  />	  
-        <h3>Global Option(s)</h3>
+  <!-- Consumer Code -->
+  <script type="text/javascript" src="init.js" charset="utf-8"></script>
+
+  <style>
+  div.response {
+    font-family: monospace;
+    overflow-x: auto;
+    overflow-y: auto;
+    background: #dddddd; 
+    border: #333333 1px solid;
+    padding: 4px;
+    margin-top: 4px;
+    margin-bottom: 4px;
+  }
+  </style>
+</head>
+
+<body onLoad="">
+  <h1>Fire Eagle OAuth V2.11</h1>
+  <p>
+    Here's a little JavaScript Library and Testing Environment for
+    making OAuth Calls to Fire Eagle.
+  </p>
+  <p>
+    To get started you will need to:
+  </p>
+  <ol>
+    <li>Use <code>sha1.js</code> and <code>oauth.js</code>
+      from <a href="http://oauth.googlecode.com/svn/code/javascript/">
+        code.google.com</a>
+      </li>
+      <li>
+        Get <a href="OAuthExt.js"><code>OAuthExt.js</code></a>
+        and <a href="fe.js"><code>fe.js</code></a> from us.
+      </li>
+      <li>
+        Simply include all 4 files in that order
+        using <code>&lt;script&gt;</code> tags.
+      </li>
+      <li>
+        Construct in JavaScript the Fire Eagle class
+        like <code>var fe = new FireEagle(consumerToken,
+          consumerSecret)</code> and have fun.  For now, check out
+          the methods in the <code>fe.js</code> class for more
+          details.
+      </li>
+    </ol>
+    <hr width="65%" align="left" />
+    <h2>Try it!</h2>
+    Here's a simple example page which walks through the OAuth
+    proceeder and makes a few user calls.
+    <h3>Global Required Settings</h3>
+    Consumer Key:
+    <input id="reqtoken" name="reqtoken" size="32" />
+    Consumer Secret:
+    <input id="reqstoken" name="reqstoken" size="32"  />	  
+    <h3>Global Option(s)</h3>
     <p>
       <input type=checkbox 
-             id="usessl"
-             name="usessl">Use SSL</input>
+      id="usessl"
+      name="usessl">Use SSL</input>
     </p>
-        <hr width="35%" align="left" />
+    <hr width="35%" align="left" />
     <h3>OAuth</h3>
     <div id="requesttok">
       <p>
-      <b>Request Token URL</b> <br />
-	  OAuth Step 1.<br />
-      <a href="#"
-         onclick="getRequestTok(); return false;">See URL</a><br />
-      <span id="texty"></span>
+        <b>Request Token URL</b> <br />
+        OAuth Step 1.<br />
+        <a href="#"
+        onclick="getRequestTok(); return false;">See URL</a><br />
+        <span id="texty"></span>
       </p>
     </div>
     <div id="userauth">
       <p>
-      <b>User Auth URL</b> <br />
-	  OAuth Step 2. Take the token from step one and authorize the
-	  user. <br />
-      oauth_token: <input id="token" name="token" size="32" />
-      <br />
-      <a href="#"
-         onclick="userAuth(); return false">See URL</a><br />
-      <span id="authurl"></span>
+        <b>User Auth URL</b> <br />
+        OAuth Step 2. Take the token from step one and authorize the
+        user. <br />
+        oauth_token: <input id="token" name="token" size="32" />
+        <br />
+        <a href="#"
+        onclick="userAuth(); return false">See URL</a><br />
+        <span id="authurl"></span>
       </p>
     </div>
     <div id="accesstok">
       <p>
-      <b>Access URL</b><br />
-	  OAuth Step 3. Take the token and secret from step one and
-	  get the access token and secret.  You will need to use these
-	  for the API calls, so you will want to store them
-	  somewhere. <br />
-      oauth_token: <input id="atoken" name="atoken" size="32" />
-      oauth_token_secret: <input id="astoken" name="astoken" size="32" />
-      <br />
-      <a href="#"
-         onclick="getAccess(); return false">See URL</a><br />
-      <span id="accessurl"></span>
+        <b>Access URL</b><br />
+        OAuth Step 3. Take the token and secret from step one and
+        get the access token and secret.  You will need to use these
+        for the API calls, so you will want to store them
+        somewhere. <br />
+        oauth_token: <input id="atoken" name="atoken" size="32" />
+        oauth_token_secret: <input id="astoken" name="astoken" size="32" />
+        <br />
+        <a href="#"
+        onclick="getAccess(); return false">See URL</a><br />
+        <span id="accessurl"></span>
       </p>
     </div>
     <hr width="35%" align="left" />
     <h3>Fire Eagle API</h3>
-    
+
     <h4>API Required Settings</h4>   
     oauth_token: <input id="qtoken" name="qtoken" size="32" />
     oauth_token_secret: <input id="qstoken" name="qstoken" size="32" />
@@ -139,85 +139,85 @@
     <div id="request">
       <p>
         <code><b>/user</b></code><br />
-      See URL via: 
-      <a href="#" onclick="getRequest(); return false">XML</a> 
-      <a href="#" onclick="getRequest(FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
-      <br />
-      <span id="requests"></span>
+        See URL via: 
+        <a href="#" onclick="getRequest(); return false">XML</a> 
+        <a href="#" onclick="getRequest(FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
+        <br />
+        <span id="requests"></span>
       </p>
     </div>
     <div id="update">
       <p>
         <code><b>/update</b></code> <br />
-      Postal: <input id="loc" name="loc" size="32" />
-      <br />
-      See URL via: 
-      <a href="#" onclick="getUpdate(false); return false">XML</a> 
-      <a href="#" onclick="getUpdate(false, FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
-      <br />
-      POST it via: 
-      <a href="#" onclick="getUpdate(true); return false">XML</a> 
-      <a href="#" onclick="getUpdate(true, FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
+        Postal: <input id="loc" name="loc" size="32" />
+        <br />
+        See URL via: 
+        <a href="#" onclick="getUpdate(false); return false">XML</a> 
+        <a href="#" onclick="getUpdate(false, FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
+        <br />
+        POST it via: 
+        <a href="#" onclick="getUpdate(true); return false">XML</a> 
+        <a href="#" onclick="getUpdate(true, FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
       </p>
       <div id="updates" 
-           class="response"
-           style="display: none;">
-        Response will appear here as requests are made.
+      class="response"
+      style="display: none;">
+      Response will appear here as requests are made.
     </div>
-    </div>
-    <div id="lookup">
-      <p>
-        <code><b>/lookup</b></code> <br />
-        Address: <input id="lq" name="lq" size="32" /> <br/>
-        See URL via: 
-        <a href="#" onclick="getLookup(); return false">XML</a> 
-        <a href="#" 
-           onclick="getLookup(FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
-        <br />
-        <span id="lookupspan"></span>
-      </p>
-    </div>
-    <b>General-purpose Requests</b><br />
-    <i>CURRENTLY UNTESTED</i><br/>
-    general_purpose_token: <input id="gt" name="gt" size="32" />
-    general_purpose_secret: <input id="gts" name="gts" size="32" />
-    <div id="recent">
-      <p>
-   <code><b>/recent</b></code> <br />
-   Time: <input id="rTime" name="rTime" size="32" /> <i>optional</i> <br/>
-   Count: <input id="rCount" name="rCount" size="32" /> <i>optional</i> <br/>
-   See URL via:
-   <a href="#" onclick="getRecent(FireEagle.RESPONSE_FORMAT.xml, true); return false">XML</a>
-   <a href="#" onclick="getRecent(FireEagle.RESPONSE_FORMAT.json, true); return false">JSON</a>
-   <br />
-   <span id="recentspan"></span>
-      </p>
-    </div>
-    <div id="lookup">
-      <p>
-   <code><b>/lookup</b></code> <br />
-   Address: <input id="lqg" name="lqg" size="32" /> <br/>
-   See URL via:
-   <a href="#" onclick="getLookup(FireEagle.RESPONSE_FORMAT.xml, true); return false">XML</a>
-   <a href="#"
+  </div>
+  <div id="lookup">
+    <p>
+      <code><b>/lookup</b></code> <br />
+      Address: <input id="lq" name="lq" size="32" /> <br/>
+      See URL via: 
+      <a href="#" onclick="getLookup(); return false">XML</a> 
+      <a href="#" 
+      onclick="getLookup(FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
+      <br />
+      <span id="lookupspan"></span>
+    </p>
+  </div>
+  <b>General-purpose Requests</b><br />
+  <i>CURRENTLY UNTESTED</i><br/>
+  general_purpose_token: <input id="gt" name="gt" size="32" />
+  general_purpose_secret: <input id="gts" name="gts" size="32" />
+  <div id="recent">
+    <p>
+      <code><b>/recent</b></code> <br />
+      Time: <input id="rTime" name="rTime" size="32" /> <i>optional</i> <br/>
+      Count: <input id="rCount" name="rCount" size="32" /> <i>optional</i> <br/>
+      See URL via:
+      <a href="#" onclick="getRecent(FireEagle.RESPONSE_FORMAT.xml, true); return false">XML</a>
+      <a href="#" onclick="getRecent(FireEagle.RESPONSE_FORMAT.json, true); return false">JSON</a>
+      <br />
+      <span id="recentspan"></span>
+    </p>
+  </div>
+  <div id="lookup">
+    <p>
+      <code><b>/lookup</b></code> <br />
+      Address: <input id="lqg" name="lqg" size="32" /> <br/>
+      See URL via:
+      <a href="#" onclick="getLookup(FireEagle.RESPONSE_FORMAT.xml, true); return false">XML</a>
+      <a href="#"
       onclick="getLookup(FireEagle.RESPONSE_FORMAT.json, true); return false">JSON</a>
-   <br />
-   <span id="lookupspang"></span>
-      </p>
-    </div>
+      <br />
+      <span id="lookupspang"></span>
+    </p>
+  </div>
 
-    <div id="within">
-      <p>
-   <code><b>/within</b></code> <br />
-   place_id: <input id="placeid" name="placeid" size="32" /> <i>optional</i> <br/>
-   woeid: <input id="woeid" name="woeid" size="32" /> <i>optional</i> <br/>
-   See URL via:
-   <a href="#" onclick="getWithin(FireEagle.RESPONSE_FORMAT.xml); return false">XML</a>
-   <a href="#"
+  <div id="within">
+    <p>
+      <code><b>/within</b></code> <br />
+      place_id: <input id="placeid" name="placeid" size="32" /> <i>optional</i> <br/>
+      woeid: <input id="woeid" name="woeid" size="32" /> <i>optional</i> <br/>
+      See URL via:
+      <a href="#" onclick="getWithin(FireEagle.RESPONSE_FORMAT.xml); return false">XML</a>
+      <a href="#"
       onclick="getWithin(FireEagle.RESPONSE_FORMAT.json); return false">JSON</a>
-   <br />
-   <span id="withinspan"></span>
-      </p>
-    </div>
+      <br />
+      <span id="withinspan"></span>
+    </p>
+  </div>
 </body> 
 </html>
