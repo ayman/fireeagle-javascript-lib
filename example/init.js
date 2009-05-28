@@ -31,7 +31,7 @@ function fillBlanks(div, url) {
 
 function getRequestTok() {
   init();
-  var url = fe.getRequestTokenUrl();
+  var url = fe.getRequestTokenUrl(document.getElementById('oauth_callback').value);
   fillBlanks('texty', url);
   return url;
 }
@@ -48,7 +48,7 @@ function getAccess() {
   init();
   fe.oauthToken = document.getElementById('atoken').value;
   fe.oauthTokenSecret = document.getElementById('astoken').value;
-  var url = fe.getAccessUrl();
+  var url = fe.getAccessUrl(document.getElementById('oauth_verifier').value);
   fillBlanks('accessurl', url);
   return url;
 }
